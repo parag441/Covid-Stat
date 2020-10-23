@@ -24,20 +24,21 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
                         datasets: [{
                             data: dailyData.map(({ confirmed }) => confirmed),
                             label: 'Infected',
-                            borderColor: '#3333ff',
+                            borderColor: 'blue',
+                            backgroundColor: '#dac4ea',
                             fill: true 
                         }, {
                             data: dailyData.map(({ deaths }) => deaths),
                             label: 'Deaths',
                             borderColor: 'red',
-                            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                            backgroundColor: '#ecbfbf',
                             fill: true 
                         }]
                     }}
                 />) : null
     );
 
-    const barChart = (
+    const pieChart = (
       confirmed
         ? (
             <Doughnut 
@@ -63,7 +64,7 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
 
     return (
         <div className={styles.container}>
-            {country? barChart : lineChart}
+            {country? pieChart : lineChart}
         </div>
     )
 }
